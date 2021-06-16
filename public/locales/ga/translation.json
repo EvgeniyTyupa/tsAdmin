@@ -1,3 +1,5 @@
 {
-    "test": "vcvcv"
+    "menu": {
+        "dashboard": "Dashboard"
+    }
 }

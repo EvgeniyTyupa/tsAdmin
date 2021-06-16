@@ -6,7 +6,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 const App = () => {
 
-  getTimeByTimeZone('2021/06/16 11:58:08+0300')
+  getTimeByTimeZone('2021-06-08T18:21:36.129444+00:00')
 
   return(
     <div>

@@ -1,8 +1,10 @@
 //@ts-ignore
-import format from 'date-format'
+import moment from 'moment'
 
 export const getTimeByTimeZone = (date: string) => {
-    let newDate = format('yyyy/MM/dd hh:mm:ssO', new Date(date))
-    console.log(newDate)
-    return newDate
+    const currentOffset = moment().utcOffset()
+    console.log(currentOffset)
+    const currentDate = moment(date).utcOffset(currentOffset).format('YYYY-MM-DD HH:mm')
+    console.log(currentDate)
+    return currentDate
 }

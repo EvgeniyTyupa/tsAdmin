@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { getTimeByTimeZone } from './Utils/timezone';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
 import Dashboard from './Pages/Dashboard/Dashboard';
 import "antd/dist/antd.css";
 import { Redirect, Route } from 'react-router';
+import Auth from './Pages/Auth/Auth';
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
         <Redirect to="/dashboard"/>
       </Route>
       <Route path="/dashboard" render={()=><Dashboard/>}/>
+      <Route path="/auth/login" render={()=><Auth/>}/>
     </>
   )
 }

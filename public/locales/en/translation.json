@@ -1,5 +1,13 @@
 {
     "menu": {
         "dashboard": "Dashboard"
+    },
+    "auth": {
+        "title": "Login",
+        "email": "Email",
+        "password": "Password",
+        "remember": "Remember Me",
+        "forgot": "Forgot your password?",
+        "submit": "Submit"
     }
 }

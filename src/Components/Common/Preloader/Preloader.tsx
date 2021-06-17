@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Preloader.module.css'
 import preloader from '../../../Assets/Common/preloader.svg'
 
-const Prealoder = () => {
+const Preloader = () => {
     return(
         <div className={classes.main}>
             <img src={preloader} alt='preloader'/>
@@ -10,4 +10,4 @@ const Prealoder = () => {
     )
 }
 
-export default Prealoder
+export default Preloader

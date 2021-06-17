@@ -1,25 +1,35 @@
 import React from 'react';
 import './App.css';
+import "antd/dist/antd.css";
+import { BrowserRouter,  Redirect, Route, Switch } from 'react-router-dom';
 
 import { getTimeByTimeZone } from './Utils/timezone';
 
+import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 import Dashboard from './Pages/Dashboard/Dashboard';
-import "antd/dist/antd.css";
-import { Redirect, Route } from 'react-router';
-import Auth from './Pages/Auth/Auth';
+import Login from './Pages/Auth/Login/Login';
+import Forgot from './Pages/Auth/Forgot/Forgot';
+import Reset from './Pages/Auth/Reset/Reset';
 
 const App = () => {
 
   getTimeByTimeZone('2021-06-08T18:21:36.129444+06:00')
 
   return(
-    <>
-      <Route exact path="/">
-        <Redirect to="/dashboard"/>
-      </Route>
-      <Route path="/dashboard" render={()=><Dashboard/>}/>
-      <Route path="/auth/login" render={()=><Auth/>}/>
-    </>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <Redirect to="/dashboard"/>
+        </Route>
+
+        {/* AUTH */}
+        <Route path="/auth/login" render={()=><Login/>}/>
+        <Route path="/auth/forgot" render={()=><Forgot/>}/>
+        <Route path="/auth/reset/:token" render={()=><Reset/>}/>
+
+        <ProtectedRoute component={Dashboard} path="/dashboard"/>
+      </Switch>
+    </BrowserRouter>
   )
 }
 

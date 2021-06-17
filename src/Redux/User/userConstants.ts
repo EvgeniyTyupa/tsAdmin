@@ -1,2 +1,4 @@
 export const SET_ACCESS_TOKEN = 'SET_ACCESS_TOKEN'
 export const SET_REFRESH_TOKEN = 'SET_REFRESH_TOKEN'
+export const SET_IS_AUTH = 'SET_IS_AUTH'
+export const SET_USER_DATA = 'SET_USER_DATA'

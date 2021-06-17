@@ -1,6 +1,7 @@
 {
     "menu": {
-        "dashboard": "Dashboard"
+        "dashboard": "Dashboard",
+        "logout": "Logout"
     },
     "auth": {
         "title": "Login",
@@ -9,5 +10,8 @@
         "remember": "Remember Me",
         "forgot": "Forgot your password?",
         "submit": "Submit"
+    },
+    "errors": {
+        "required": "Required field"
     }
 }

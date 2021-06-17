@@ -1,1 +1,2 @@
 export const SET_IS_FETCHING = 'SET_IS_FETCHING'
+export const SET_SERVER_ERROR = 'SET_SERVER_ERROR' 

@@ -22,3 +22,6 @@
 .input svg {
     margin-right: 5px;
 }
+.serverError {
+    margin-bottom: 10px;
+}

@@ -4,17 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
-import { BrowserRouter } from 'react-router-dom';
+
 import store from './Redux/reduxStore';
 import './Utils/i18n.js';
-import Prealoder from './Components/Common/Preloader/Preloader';
+import Preloader from './Components/Common/Preloader/Preloader';
+import { interceptor } from './Api/customAxios'
+interceptor(store)
 
 ReactDOM.render(
   <Provider store={store}>
-    <Suspense fallback={<Prealoder/>}>
-      <BrowserRouter>
+    <Suspense fallback={<Preloader/>}>
         <App />
-      </BrowserRouter>
     </Suspense>
   </Provider>,
   document.getElementById('root')

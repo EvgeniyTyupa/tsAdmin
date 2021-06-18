@@ -5,10 +5,12 @@ import multi from 'redux-multi'
 
 import userReducer from './User/userReducer';
 import commonReducer from './Common/commonReducer';
+import levelReducer from './Level/levelReducer';
 
 let rootReducer = combineReducers({
     user: userReducer,
-    common: commonReducer
+    common: commonReducer,
+    level: levelReducer
 })
 
 type RootReducerType = typeof rootReducer

@@ -1,0 +1,2 @@
+export const SET_LEVELS_DATA = 'SET_LEVELS_DATA'
+export const SET_LEVELS_TOTAL = 'SET_LEVELS_TOTAL'

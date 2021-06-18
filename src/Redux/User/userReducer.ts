@@ -1,5 +1,5 @@
 import { ThunkAction } from "redux-thunk"
-import { authApi } from "../../Api/api"
+import { authApi } from "../../Api/authApi"
 import { deleteCookie, setCookie } from "../../Utils/cookie/cookie"
 import { CommonActionTypes, setIsFetching, setServerError, setServerMessage } from "../Common/commonActions"
 import { AppStateType } from "../reduxStore"

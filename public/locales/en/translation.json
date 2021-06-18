@@ -23,5 +23,8 @@
     },
     "errors": {
         "required": "Required field"
+    },
+    "level": {
+        "title": "Level"
     }
 }

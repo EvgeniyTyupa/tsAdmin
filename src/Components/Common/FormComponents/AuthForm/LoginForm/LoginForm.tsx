@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './AuthForm.module.css'
+import classes from '../AuthForm.module.css'
 import { Controller, useForm } from 'react-hook-form'
 import { UserOutlined } from '@ant-design/icons';
 import { Button, Input, Checkbox } from 'antd'
@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
-import { cx } from '../../../../Utils/classnames';
-import FormError from './Errors/FormError/FormError';
+import { cx } from '../../../../../Utils/classnames';
+import FormError from '../Errors/FormError/FormError';
 
 interface AuthFormProps {
     login: (email: string, password: string, remember: boolean) => void

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import classes from '../Auth.module.css'
-import AuthForm from '../../../Components/Common/FormComponents/AuthForm/AuthForm'
+import LoginForm from '../../../Components/Common/FormComponents/AuthForm/LoginForm/LoginForm'
 import { useTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import { login } from '../../../Redux/User/userReducer'
@@ -30,7 +30,7 @@ const Auth = ({ login, isFetching, serverError, isAuth, setServerError }: AuthPr
             {isFetching ? <Preloader/> :
             <div className={classes.main}>
                 <h2>{t("auth.title")}</h2>
-                <AuthForm login={login} serverError={serverError}/>
+                <LoginForm login={login} serverError={serverError}/>
             </div>}
         </>
     )

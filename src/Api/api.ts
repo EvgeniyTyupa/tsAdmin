@@ -16,5 +16,17 @@ export const authApi = {
     logout(){
         return instance.post('/auth/logout')
         .then(response => response.data)
+    },
+    forgot(email: string){
+        return instance.post('/auth/forgot', { email })
+        .then(response => response.data)
+    },
+    checkResetToken(reset_token: string){
+        return instance.get(`/auth/reset/${reset_token}`)
+        .then(response => response.data)
+    },
+    resetPassword(new_password: string, confirm_password: string, reset_token: string){
+        return instance.post(`/auth/reset/${reset_token}`, { new_password, confirm_password })
+        .then(response => response.data)
     }
 }

@@ -9,7 +9,16 @@
         "password": "Password",
         "remember": "Remember Me",
         "forgot": "Forgot your password?",
-        "submit": "Submit"
+        "submit": "Submit",
+        "forgotPage": {
+            "title": "Forgot password",
+            "backToLogin": "Back to login page"
+        },
+        "resetPage": {
+            "title": "Reset password",
+            "newPass": "New password",
+            "confirmPass": "Confirm password"
+        }
     },
     "errors": {
         "required": "Required field"

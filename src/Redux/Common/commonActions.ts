@@ -1,6 +1,8 @@
-import { SET_IS_FETCHING, SET_SERVER_ERROR } from "./commonConstants";
+import { SET_IS_FETCHING, SET_SERVER_ERROR, SET_SERVER_MESSAGE } from "./commonConstants";
 
-export type CommonActionTypes = SetIsFetchingActionType | SetServerErrorActionType
+export type CommonActionTypes = 
+    SetIsFetchingActionType | SetServerErrorActionType |
+    SetServerMessageActionType
 
 type SetIsFetchingActionType = {
     type: typeof SET_IS_FETCHING,
@@ -18,4 +20,13 @@ type SetServerErrorActionType = {
 
 export const setServerError = (serverError: string | null): SetServerErrorActionType => ({
     type: SET_SERVER_ERROR, serverError
+})
+
+type SetServerMessageActionType = {
+    type: typeof SET_SERVER_MESSAGE,
+    serverMessage: string | null
+}
+
+export const setServerMessage = (serverMessage: string | null): SetServerMessageActionType => ({
+    type: SET_SERVER_MESSAGE, serverMessage
 })

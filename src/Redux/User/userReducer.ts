@@ -1,7 +1,7 @@
 import { ThunkAction } from "redux-thunk"
 import { authApi } from "../../Api/api"
 import { deleteCookie, setCookie } from "../../Utils/cookie/cookie"
-import { CommonActionTypes, setIsFetching, setServerError } from "../Common/commonActions"
+import { CommonActionTypes, setIsFetching, setServerError, setServerMessage } from "../Common/commonActions"
 import { AppStateType } from "../reduxStore"
 import { setAccessToken, setIsAuth, setRefreshToken, setUserData, UserActionTypes } from "./userActions"
 import { SET_ACCESS_TOKEN, SET_IS_AUTH, SET_REFRESH_TOKEN, SET_USER_DATA } from "./userConstants"
@@ -110,6 +110,49 @@ export const logout = (): ThunkAction<Promise<void>, AppStateType, undefined, Us
         ])
 
     }catch(err){
+        dispatch(setIsFetching(false))
+    }
+}
+
+export const forgot = (email: string): ThunkAction<Promise<void>, AppStateType, undefined, UserActionTypes | CommonActionTypes> => async (dispatch) => {
+    dispatch(setIsFetching(true))
+    try{
+        let response = await authApi.forgot(email)
+        //@ts-ignore
+        dispatch([setServerError(null), setServerMessage(response.message), setIsFetching(false)])
+    }catch(err){
+        if(err.response){
+            dispatch(setServerError(err.response.data.error))
+        }
+        dispatch(setIsFetching(false))
+    }
+}
+
+export const checkResetToken = (reset_token: string): ThunkAction<Promise<void>, AppStateType, undefined, UserActionTypes | CommonActionTypes> => async (dispatch) => {
+    dispatch(setIsFetching(true))
+    try{
+        let response = await authApi.checkResetToken(reset_token)
+        console.log(response)
+        
+        //@ts-ignore
+        dispatch([setIsFetching(false)])
+    }catch(err){
+       
+        if(err.response){
+            dispatch(setServerError(err.response.data.error))
+        }
+        dispatch(setIsFetching(false))
+    }
+}
+
+export const resetPassword = (new_password: string, confirm_password: string, reset_token: string): ThunkAction<Promise<void>, AppStateType, undefined, UserActionTypes | CommonActionTypes> => async (dispatch) => {
+    dispatch(setIsFetching(false))
+    try{
+
+    }catch(err){
+        if(err.response){
+            dispatch(setServerError(err.response.data.error))
+        }
         dispatch(setIsFetching(false))
     }
 }

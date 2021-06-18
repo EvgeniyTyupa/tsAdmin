@@ -21,6 +21,9 @@ const App = () => {
         <Route exact path="/">
           <Redirect to="/dashboard"/>
         </Route>
+        <Route exact path="/auth/reset">
+          <Redirect to="/dashboard"/>
+        </Route>
 
         {/* AUTH */}
         <Route path="/auth/login" render={()=><Login/>}/>

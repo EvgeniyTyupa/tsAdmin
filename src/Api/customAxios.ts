@@ -1,9 +1,13 @@
 import axios from 'axios'
 import { refreshToken } from '../Redux/User/userReducer'
 import { deleteCookie, getCookie } from '../Utils/cookie/cookie'
+import https from 'https'
 
 const instance = axios.create({
-    baseURL: 'http://135.125.218.154:9993/api/v1'
+    baseURL: 'http://135.125.218.154:9993/api/v1',
+    httpsAgent: new https.Agent({
+        rejectUnauthorized: false
+    })
 })
 
 export function interceptor(store: any) {

@@ -19,9 +19,12 @@ interface ResetProps extends RouteComponentProps<MatchParams>{
     resetPassword: (new_password: string, confirm_password: string, reset_token: string) => void
     isFetching: boolean
     serverError: string | null
+    serverMessage: string | null
+    isCheckedResetToken: boolean
+    isValidResetToken: boolean
 }
 
-const Reset = ({ match, checkResetToken, setServerError, resetPassword, isFetching, serverError }: ResetProps) => {
+const Reset = ({ match, checkResetToken, setServerError, resetPassword, isFetching, serverError, isCheckedResetToken, isValidResetToken, serverMessage }: ResetProps) => {
     let reset_token = match.params.token 
 
     useEffect(() => {
@@ -34,12 +37,12 @@ const Reset = ({ match, checkResetToken, setServerError, resetPassword, isFetchi
 
     return(
         <>
-            {isFetching ? <Preloader/> :
+            {(!isCheckedResetToken || isFetching) ? <Preloader/> :
             <>
-                {serverError ? <Redirect to="/auth/login"/> :
+                {!isValidResetToken ? <Redirect to="/auth/login"/> :
                 <div className={classes.main}>  
                     <h2>{t("auth.resetPage.title")}</h2>
-                    <ResetPasswordForm serverError={serverError} resetPassword={resetPassword} reset_token={reset_token}/>
+                    <ResetPasswordForm serverError={serverError} resetPassword={resetPassword} reset_token={reset_token} serverMessage={serverMessage}/>
                 </div>}
             </>
             }
@@ -53,7 +56,9 @@ let WithUrlDataContainerComponent = withRouter(Reset)
 let mapStateToProps = (state: AppStateType) => ({
     isFetching: state.common.isFetching,
     serverError: state.common.serverError,
-    serverMessage: state.common.serverMessage
+    serverMessage: state.common.serverMessage,
+    isCheckedResetToken: state.user.isCheckedResetToken,
+    isValidResetToken: state.user.isValidResetToken
 })
 
 export default connect(mapStateToProps, {

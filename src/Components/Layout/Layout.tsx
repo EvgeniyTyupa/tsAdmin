@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import { logout } from '../../Redux/User/userReducer'
+import { useMenuItems } from './menuItems'
 
 interface LayoutProps {
     children: React.ReactElement,
@@ -23,13 +24,17 @@ const Layout = ({ children, logout }: LayoutProps) => {
         setIsCollapsed(!isCollapsed)
     }
 
+    const menuItemsList = useMenuItems()
+
     return(
         <AntLayout className={classes.main}>
             <Sider collapsible collapsed={isCollapsed} onCollapse={handleCollapse}>
                 <Menu >
-                    <Menu.Item>
-                        <NavLink to="/dashboard">{t("menu.dashboard")}</NavLink>
-                    </Menu.Item>
+                    {menuItemsList.map(item => (
+                        <Menu.Item key={item.text}>
+                            <NavLink to={item.path}>{item.text}</NavLink>
+                        </Menu.Item>
+                    ))}
                     <Menu.Item>
                         <Button onClick={() => logout()}>{t("menu.logout")}</Button>
                     </Menu.Item>

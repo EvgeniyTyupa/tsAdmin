@@ -1,6 +1,7 @@
 {
     "menu": {
         "dashboard": "Dashboard",
+        "level": "Level",
         "logout": "Logout"
     },
     "auth": {

@@ -10,6 +10,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Login from './Pages/Auth/Login/Login';
 import Forgot from './Pages/Auth/Forgot/Forgot';
 import Reset from './Pages/Auth/Reset/Reset';
+import LevelContainer from './Pages/Level/LevelContainer';
 
 const App = () => {
 
@@ -31,6 +32,8 @@ const App = () => {
         <Route path="/auth/reset/:token" render={()=><Reset/>}/>
 
         <ProtectedRoute component={Dashboard} path="/dashboard"/>
+        <ProtectedRoute component={LevelContainer} path="/level"/>
+
       </Switch>
     </BrowserRouter>
   )

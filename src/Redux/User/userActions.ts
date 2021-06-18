@@ -1,9 +1,10 @@
-import { SET_ACCESS_TOKEN, SET_IS_AUTH, SET_REFRESH_TOKEN, SET_USER_DATA } from "./userConstants";
+import { SET_ACCESS_TOKEN, SET_IS_AUTH, SET_IS_CHECKED_RESET_TOKEN, SET_IS_VALID_RESET_TOKEN, SET_REFRESH_TOKEN, SET_USER_DATA } from "./userConstants";
 import { User } from "./userTypes";
 
 export type UserActionTypes = 
     SetAccessTokenActionType | SetRefreshTokenActionType |
-    SetIsAuthActionType | SetUserDataActionType
+    SetIsAuthActionType | SetUserDataActionType |
+    SetIsCheckedResetTokenActionType | SetIsValidResetTokenActionType
     
 type SetAccessTokenActionType = {
     type: typeof SET_ACCESS_TOKEN,
@@ -39,4 +40,22 @@ type SetUserDataActionType = {
 
 export const setUserData = (user: User | null): SetUserDataActionType => ({
     type: SET_USER_DATA, user
+})
+
+type SetIsCheckedResetTokenActionType = {
+    type: typeof SET_IS_CHECKED_RESET_TOKEN,
+    isCheckedResetToken: boolean
+}
+
+export const setIsCheckedResetToken = (isCheckedResetToken: boolean): SetIsCheckedResetTokenActionType => ({
+    type: SET_IS_CHECKED_RESET_TOKEN, isCheckedResetToken
+})
+
+type SetIsValidResetTokenActionType = {
+    type: typeof SET_IS_VALID_RESET_TOKEN,
+    isValidResetToken: boolean
+}
+
+export const setIsValidResetToken = (isValidResetToken: boolean): SetIsValidResetTokenActionType => ({
+    type: SET_IS_VALID_RESET_TOKEN, isValidResetToken
 })

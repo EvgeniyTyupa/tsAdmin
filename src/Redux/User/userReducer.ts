@@ -3,8 +3,8 @@ import { authApi } from "../../Api/api"
 import { deleteCookie, setCookie } from "../../Utils/cookie/cookie"
 import { CommonActionTypes, setIsFetching, setServerError, setServerMessage } from "../Common/commonActions"
 import { AppStateType } from "../reduxStore"
-import { setAccessToken, setIsAuth, setRefreshToken, setUserData, UserActionTypes } from "./userActions"
-import { SET_ACCESS_TOKEN, SET_IS_AUTH, SET_REFRESH_TOKEN, SET_USER_DATA } from "./userConstants"
+import { setAccessToken, setIsAuth, setIsCheckedResetToken, setIsValidResetToken, setRefreshToken, setUserData, UserActionTypes } from "./userActions"
+import { SET_ACCESS_TOKEN, SET_IS_AUTH, SET_IS_CHECKED_RESET_TOKEN, SET_IS_VALID_RESET_TOKEN, SET_REFRESH_TOKEN, SET_USER_DATA } from "./userConstants"
 import { User } from "./userTypes"
 
 
@@ -12,7 +12,9 @@ let initialState = {
     accessToken: null as string | null,
     refreshToken: null as string | null,
     isAuth: false as boolean,
-    user: null as User | null
+    user: null as User | null,
+    isCheckedResetToken: false as boolean,
+    isValidResetToken: false as boolean 
 }
 
 export type InitialStateType = typeof initialState
@@ -30,6 +32,12 @@ export const userReducer = (state = initialState, action: UserActionTypes): Init
         }
         case SET_USER_DATA: {
             return { ...state, user: action.user }
+        }
+        case SET_IS_CHECKED_RESET_TOKEN: {
+            return { ...state, isCheckedResetToken: action.isCheckedResetToken }
+        }
+        case SET_IS_VALID_RESET_TOKEN: {
+            return { ...state, isValidResetToken: action.isValidResetToken }
         }
         default:
             return state
@@ -135,20 +143,24 @@ export const checkResetToken = (reset_token: string): ThunkAction<Promise<void>,
         console.log(response)
         
         //@ts-ignore
-        dispatch([setIsFetching(false)])
+        dispatch([setIsValidResetToken(true), setIsFetching(false)])
     }catch(err){
-       
         if(err.response){
             dispatch(setServerError(err.response.data.error))
         }
-        dispatch(setIsFetching(false))
+        //@ts-ignore
+        dispatch([setIsValidResetToken(false), setIsFetching(false)])
+    }finally{
+        dispatch(setIsCheckedResetToken(true))
     }
 }
 
 export const resetPassword = (new_password: string, confirm_password: string, reset_token: string): ThunkAction<Promise<void>, AppStateType, undefined, UserActionTypes | CommonActionTypes> => async (dispatch) => {
-    dispatch(setIsFetching(false))
-    try{
-
+    dispatch(setIsFetching(true))
+    try{   
+        let response = await authApi.resetPassword(new_password, confirm_password, reset_token)
+        //@ts-ignore
+        dispatch([setServerError(null), setServerMessage(response.message), setIsFetching(false)])
     }catch(err){
         if(err.response){
             dispatch(setServerError(err.response.data.error))

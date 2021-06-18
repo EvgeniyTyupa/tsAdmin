@@ -13,6 +13,7 @@ interface ResetPasswordFormProps {
     serverError: string | null
     resetPassword: (new_password: string, confirm_password: string, reset_token: string) => void
     reset_token: string
+    serverMessage: string | null
 }
 
 interface FormValues {
@@ -20,7 +21,7 @@ interface FormValues {
     confirm_password: string
 }
 
-const ResetPasswordForm = ({ serverError, resetPassword, reset_token }: ResetPasswordFormProps) => {
+const ResetPasswordForm = ({ serverError, serverMessage, resetPassword, reset_token }: ResetPasswordFormProps) => {
     const { handleSubmit, control, reset, formState: { errors } } = useForm<FormValues>()
 
     const { t } = useTranslation()
@@ -43,6 +44,7 @@ const ResetPasswordForm = ({ serverError, resetPassword, reset_token }: ResetPas
                     render={({ field: { onChange, onBlur, value, ref } }) => (
                         <>
                             <Input
+                                type="password"
                                 className={classes.input}
                                 size="large"
                                 placeholder={t("auth.resetPage.newPass")}
@@ -66,6 +68,7 @@ const ResetPasswordForm = ({ serverError, resetPassword, reset_token }: ResetPas
                     render={({ field: { onChange, onBlur, value, ref } }) => (
                         <>
                             <Input
+                                type="password"
                                 className={classes.input}
                                 size="large"
                                 placeholder={t("auth.resetPage.confirmPass")}
@@ -82,6 +85,7 @@ const ResetPasswordForm = ({ serverError, resetPassword, reset_token }: ResetPas
                 />
             </div>
             {serverError && <FormError className={classes.serverError} message={serverError}/>}
+            {serverMessage && <p>{serverMessage}</p>}
             <Button type="primary" htmlType="submit">{t("auth.submit")}</Button>
             <div className={cx(classes.field, classes.forgot)}>
                 <NavLink to="/auth/login">{t("auth.forgotPage.backToLogin")}</NavLink>

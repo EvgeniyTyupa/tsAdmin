@@ -5,10 +5,12 @@ export const useMenuItems = () => {
 
     const menu = [
         {
+            id: 'dashboard',
             path: '/dashboard',
             text: t("menu.dashboard")
         },
         {
+            id: 'level',
             path: '/level',
             text: t("menu.level")
         }

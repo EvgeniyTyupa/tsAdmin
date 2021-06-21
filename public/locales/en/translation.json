@@ -25,6 +25,27 @@
         "required": "Required field"
     },
     "level": {
-        "title": "Level"
+        "title": "Level",
+        "table": {
+            "color": "Color",
+            "name": "Name",
+            "cashback": "Cashback Parking",
+            "displaySpent": "Display Spent",
+            "realSpent": "Real Spent",
+            "updated": "Last Updated",
+            "action": "Action"
+        },
+        "form": {
+            "color": "Color",
+            "name": "Name",
+            "description": "Description",
+            "cashback": "Cashback Parking",
+            "real_spent_start": "Real Spent Start",
+            "real_spent_end": "Real Spent End",
+            "display_spent_start": "Display Spent Start",
+            "display_spent_end": "Display Spent End",
+            "submit": "Add Level",
+            "submitEdit": "Edit Level"
+        }
     }
 }

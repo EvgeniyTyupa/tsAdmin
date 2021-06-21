@@ -2,3 +2,22 @@
     min-height: 100vh;
     display: flex;
 }
+.logo {
+    background-color: white;
+}
+.logo img {
+    width: 100%;
+}
+.header {
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+}   
+.header svg {
+    color: white;
+    font-size: 20px;
+}
+.content {
+    padding: 25px;
+    box-sizing: border-box;
+}

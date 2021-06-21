@@ -9,6 +9,8 @@ import Preloader from '../../../Components/Common/Preloader/Preloader'
 import { setServerError } from '../../../Redux/Common/commonActions'
 import { Redirect } from 'react-router'
 
+import logo from '../../../Assets/Common/logo.png'
+
 interface AuthProps {
     login: (email: string, password: string, remember: boolean) => void
     setServerError: (message: string | null) => void
@@ -29,6 +31,7 @@ const Auth = ({ login, isFetching, serverError, isAuth, setServerError }: AuthPr
             {isAuth && <Redirect to="/dashboard"/>}
             {isFetching ? <Preloader/> :
             <div className={classes.main}>
+                <img src={logo}/>
                 <h2>{t("auth.title")}</h2>
                 <LoginForm login={login} serverError={serverError}/>
             </div>}

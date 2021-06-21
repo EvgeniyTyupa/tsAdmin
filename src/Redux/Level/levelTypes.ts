@@ -8,4 +8,6 @@ export interface Level {
     real_spent_end: number
     created_at: string
     updated_at: string
+    display_spent_start: number
+    display_spent_end: number
 }

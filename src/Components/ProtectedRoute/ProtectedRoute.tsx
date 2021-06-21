@@ -30,8 +30,8 @@ const ProtectedRoute = ({ component, isAuth, isFetching, me, ...rest }: Protecte
     
     return(
         <>
-            {isFetching ? <Preloader/> :
-            <Route { ...rest} render={routeComponent}/>}
+            {isFetching && <Preloader/>}
+            <Route { ...rest} render={routeComponent}/>
         </>
     )
 }

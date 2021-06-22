@@ -32,7 +32,6 @@ const Auth = ({ login, isFetching, serverError, isAuth, setServerError }: AuthPr
             {isFetching ? <Preloader/> :
             <div className={classes.main}>
                 <img src={logo}/>
-                <h2>{t("auth.title")}</h2>
                 <LoginForm login={login} serverError={serverError}/>
             </div>}
         </>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect, Route } from 'react-router-dom'
 import { AppStateType } from '../../Redux/reduxStore'
 import { me } from '../../Redux/User/userReducer'
+import { User } from '../../Redux/User/userTypes'
 import Preloader from '../Common/Preloader/Preloader'
 
 
@@ -11,13 +12,14 @@ interface ProtectedRouteProps {
     isAuth: boolean
     path: string
     isFetching: boolean
+    user: User | null
     me: () => void
 }
 
-const ProtectedRoute = ({ component, isAuth, isFetching, me, ...rest }: ProtectedRouteProps) => {
+const ProtectedRoute = ({ component, isAuth, isFetching, user, me, ...rest }: ProtectedRouteProps) => {
     
     useEffect(() => {
-        if(!isAuth){
+        if(!isAuth || !user){
             me()
         }
     }, [])
@@ -38,7 +40,8 @@ const ProtectedRoute = ({ component, isAuth, isFetching, me, ...rest }: Protecte
 
 let mapStateToProps = (state: AppStateType) => ({
     isAuth: state.user.isAuth,
-    isFetching: state.common.isFetching
+    isFetching: state.common.isFetching,
+    user: state.user.user
 })
 
 export default connect(mapStateToProps, {

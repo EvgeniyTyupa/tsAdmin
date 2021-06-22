@@ -7,4 +7,5 @@ export interface User {
     permissions: string[]
     phone: string
     role: string
+    avatar?: string
 }

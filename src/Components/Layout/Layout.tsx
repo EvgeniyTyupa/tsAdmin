@@ -9,16 +9,20 @@ import { useMenuItems } from './menuItems'
 
 import logo from '../../Assets/Common/logo.png'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { AppStateType } from '../../Redux/reduxStore'
+import UserProfile from './UserProfile/UserProfile'
+import { User } from '../../Redux/User/userTypes'
 
 interface LayoutProps {
     children: React.ReactElement,
+    user: User | null
     logout: () => void
 }
 
 const { Header, Content, Footer, Sider } = AntLayout
 const { SubMenu } = Menu
 
-const Layout = ({ children, logout }: LayoutProps) => {
+const Layout = ({ children, user, logout }: LayoutProps) => {
     const { t } = useTranslation()
 
     const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
@@ -54,6 +58,7 @@ const Layout = ({ children, logout }: LayoutProps) => {
                         className: 'trigger',
                         onClick: handleCollapse,
                     })}
+                    <UserProfile user={user}/>
                 </Header>
                 <Content className={classes.content}>
                     {children}
@@ -63,6 +68,10 @@ const Layout = ({ children, logout }: LayoutProps) => {
     )
 }
 
-export default connect(null, {
+let mapStateToProps = (state: AppStateType) => ({
+    user: state.user.user
+})
+
+export default connect(mapStateToProps, {
     logout
 })(Layout)

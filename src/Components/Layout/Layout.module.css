@@ -12,6 +12,7 @@
     display: flex;
     align-items: center;
     padding: 0 25px;
+    justify-content: space-between;
 }   
 .header svg {
     color: white;

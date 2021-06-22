@@ -1,3 +1,10 @@
 export const SET_LEVELS_DATA = 'SET_LEVELS_DATA'
 export const SET_LEVELS_TOTAL = 'SET_LEVELS_TOTAL'
 export const SET_CURRENT_LEVEL = 'SET_CURRENT_LEVEL'
+
+export const KEY_COLOR = 'color'
+export const KEY_NAME = 'name'
+export const KEY_CASHBACK = 'cashback_parking'
+export const KEY_DISPLAY_START = 'display_spent_start'
+export const KEY_REAL_START = 'real_spent_start'
+export const KEY_UPDATED_AT = 'updated_at'

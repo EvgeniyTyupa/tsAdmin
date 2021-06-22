@@ -51,20 +51,7 @@ const LevelForm = ({ level, type, action, handleModal }: LevelFormProps) => {
             data.color = "#000000"
         }
         action(data, level?.id)
-
-        reset({
-            color: level?.color || "#000000",
-            name: level?.name || "",
-            description: level?.description || "",
-            cashback_parking: level?.cashback_parking || 0,
-            real_spent_start: level?.real_spent_start || 0,
-            real_spent_end: level?.real_spent_end || 0,
-            display_spent_start: level?.display_spent_start || 0,
-            display_spent_end: level?.display_spent_end || 0
-        })
     }
-
-    console.log('currentLevel', level)
 
     const fields = [
         {

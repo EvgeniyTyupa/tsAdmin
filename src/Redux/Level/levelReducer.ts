@@ -31,10 +31,10 @@ const levelReducer = (state = ininitalState, action: LevelActionTypes): InitialS
     }
 } 
 
-export const getLevels = (limit: number, current: number, sorter: string, search: string | null): ThunkAction<Promise<void>, AppStateType, undefined, LevelActionTypes | CommonActionTypes> => async (dispatch) => {
+export const getLevels = (limit: number, current: number, sorter: string, search: string | null, searchKey: string | null): ThunkAction<Promise<void>, AppStateType, undefined, LevelActionTypes | CommonActionTypes> => async (dispatch) => {
     dispatch(setIsFetching(true))
     try{
-        let response = await levelApi.getLevels(limit, current, sorter, search)
+        let response = await levelApi.getLevels(limit, current, sorter, search, searchKey)
 
         //@ts-ignore
         dispatch([setLevelsData(response.data), setLevelsTotal(response._meta.total), setIsFetching(false)])
@@ -66,8 +66,18 @@ export const editLevel = (data: LevelFormValues, levelId?: string): ThunkAction<
         }catch(err){
             dispatch(setIsFetching(false))
         }
+    }   
+}
+
+export const deleteLevel = (levelId: string): ThunkAction<Promise<void>, AppStateType, undefined, LevelActionTypes | CommonActionTypes> => async (dispatch) => {
+    dispatch(setIsFetching(true))
+    try{
+        let response = await levelApi.deleteLevel(levelId)
+        console.log(response)
+        dispatch(setIsFetching(false))
+    }catch(err){
+        dispatch(setIsFetching(false))
     }
-    
 }
 
 export default levelReducer

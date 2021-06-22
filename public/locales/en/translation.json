@@ -24,6 +24,12 @@
     "errors": {
         "required": "Required field"
     },
+    "actions": {
+        "new": "+ New",
+        "removeText": "Are you sure?",
+        "remove": "Remove",
+        "cancel": "Cancel"
+    },
     "level": {
         "title": "Level",
         "table": {

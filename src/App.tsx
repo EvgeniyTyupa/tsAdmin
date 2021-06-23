@@ -11,6 +11,7 @@ import Login from './Pages/Auth/Login/Login';
 import Forgot from './Pages/Auth/Forgot/Forgot';
 import Reset from './Pages/Auth/Reset/Reset';
 import LevelContainer from './Pages/Level/LevelContainer';
+import ProfileContainer from './Pages/Profile/ProfileContainer';
 
 const App = () => {
 
@@ -33,6 +34,7 @@ const App = () => {
 
         <ProtectedRoute component={Dashboard} path="/dashboard"/>
         <ProtectedRoute component={LevelContainer} path="/level"/>
+        <ProtectedRoute component={ProfileContainer} path="/profile"/>
 
       </Switch>
     </BrowserRouter>

@@ -169,4 +169,34 @@ export const resetPassword = (new_password: string, confirm_password: string, re
     }
 }
 
+export const changePassword = (current_password: string, new_password: string, confirm_password: string): ThunkAction<Promise<void>, AppStateType, undefined, UserActionTypes | CommonActionTypes> => async (dispatch) => {
+    dispatch(setIsFetching(true))
+    try{
+        let response = await authApi.changePassword(current_password, new_password, confirm_password)
+
+        //@ts-ignore
+        dispatch([setServerError(null), setServerMessage(response.message), setIsFetching(false)])
+    }catch(err){
+        if(err.response){
+            dispatch(setServerError(err.response.data.error))
+        }
+        dispatch(setIsFetching(false))
+    }
+}
+
+export const updateProfile = (email: string, first_name: string, last_name: string, phone: string, mobile: string): ThunkAction<Promise<void>, AppStateType, undefined, UserActionTypes | CommonActionTypes> => async (dispatch) => {
+    dispatch(setIsFetching(true))
+    try{
+        let response = await authApi.updateProfile(email, first_name, last_name, phone, mobile)
+
+        //@ts-ignore
+        dispatch([setServerError(null), setServerMessage(response.message), setIsFetching(false)])
+    }catch(err){
+        if(err.response){
+            dispatch(setServerError(err.response.data.error))
+        }
+        dispatch(setIsFetching(false))
+    }
+}
+
 export default userReducer

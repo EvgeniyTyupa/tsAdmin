@@ -19,6 +19,7 @@
     align-items: center;
     background-color: white;
     min-width: 25%;
+    border-radius: 8px;
 }
 .closeBut {
     align-self: flex-end;

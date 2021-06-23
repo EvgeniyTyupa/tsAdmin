@@ -8,6 +8,7 @@ import { useTableColumns } from './useTableColumns';
 import LevelForm, { LevelFormValues } from '../../Components/Level/LevelForm';
 import LevelDeleteModal from '../../Components/Level/LevelDeleteModal/LevelDeleteModal';
 import { FilterValue } from 'antd/lib/table/interface';
+import Breadcrumb, { BreadcrumbPath } from '../../Components/Layout/Breadcrumb/Breadcrumb';
 
 interface LevelProps {
     levels: ILevel[]
@@ -50,10 +51,18 @@ const Level = ({
 
     const columns = useTableColumns(handleEditModal, handleOpenDeleteModal, searchLevels)
 
+    const routes: BreadcrumbPath[] = [
+        {
+            title: t("menu.level"),
+            path: "/level"
+        }
+    ]
+
     return(
         <Layout>
             <div className={classes.main}>
                 <div className={classes.header}>
+                    <Breadcrumb routes={routes}/>
                     <Button onClick={handleAddModal}>{t("actions.new")}</Button>
                 </div>
                 {isOpenAddModal && <LevelForm type="new" handleModal={handleAddModal} action={addLevel}/>}

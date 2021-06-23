@@ -2,6 +2,7 @@
     "menu": {
         "dashboard": "Dashboard",
         "level": "Level",
+        "profile": "Profile",
         "logout": "Logout"
     },
     "auth": {
@@ -22,7 +23,9 @@
         }
     },
     "errors": {
-        "required": "Required field"
+        "required": "Required field",
+        "minPassLength": "Password must contains 8 or more symbols!",
+        "match": "Passwords are not match!"
     },
     "actions": {
         "new": "+ New",
@@ -52,6 +55,28 @@
             "display_spent_end": "Display Spent End",
             "submit": "Add Level",
             "submitEdit": "Edit Level"
+        }
+    },
+    "profile": {
+        "form": {
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "email": "Email",
+            "mobile": "Mobile",
+            "phone": "Phone",
+            "job": "Job",
+            "submit": "Save",
+            "changePass": "Change Password"
+        },
+        "changePass": {
+            "current": "Current Password",
+            "new": "New Password",
+            "confirm": "Confirm Password",
+            "secureStatusTooWeak": "Too weak",
+            "secureStatusWeak": "Weak",
+            "secureStatusMedium": "Medium",
+            "secureStatusStrong": "Strong",
+            "info": "Please enter at least 8 characters and don't use passwords that are easy to guess."
         }
     }
 }

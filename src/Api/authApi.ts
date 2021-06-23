@@ -28,5 +28,13 @@ export const authApi = {
     resetPassword(new_password: string, confirm_password: string, reset_token: string){
         return instance.post(`/auth/reset/${reset_token}`, { new_password, confirm_password })
         .then(response => response.data)
+    },
+    changePassword(current_password: string, new_password: string, confirm_password: string){
+        return instance.put(`/profile/password`, { current_password, new_password, confirm_password })
+        .then(response => response.data)
+    },
+    updateProfile(email: string, first_name: string, last_name: string, phone: string, mobile: string){
+        return instance.put(`/profile`, { email, first_name, last_name, phone, mobile })
+        .then(response => response.data)
     }
 }

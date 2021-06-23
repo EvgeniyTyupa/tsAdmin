@@ -48,7 +48,7 @@ const Layout = ({ children, user, logout }: LayoutProps) => {
                         </Menu.Item>
                     ))}
                     <Menu.Item key="logout">
-                        <Button onClick={() => logout()}>{t("menu.logout")}</Button>
+                        
                     </Menu.Item>
                 </Menu>
             </Sider>
@@ -58,7 +58,7 @@ const Layout = ({ children, user, logout }: LayoutProps) => {
                         className: 'trigger',
                         onClick: handleCollapse,
                     })}
-                    <UserProfile user={user}/>
+                    <UserProfile user={user} logout={logout}/>
                 </Header>
                 <Content className={classes.content}>
                     {children}

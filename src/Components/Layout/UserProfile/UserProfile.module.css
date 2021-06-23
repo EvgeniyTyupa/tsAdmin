@@ -3,7 +3,18 @@
 }
 .user {
     color: white;
+    background-color: transparent;
+    border: none;
+}
+.user:hover, .user:active, .user:focus {
+    background-color: transparent;
+    color: white;
 }
 .userName {
     margin-left: 8px;
+}
+.menuBut {
+    border: none;
+    width: 100%;
+    text-align: left;
 }

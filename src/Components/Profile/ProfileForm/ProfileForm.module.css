@@ -1,0 +1,36 @@
+.main {
+    width: 380px;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
+    top: -50px;
+}
+.field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.field label {
+    width: 150px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.requiredMark {
+    color: tomato;
+}
+.buttons {
+    padding-left: 105px;
+}
+.buttons button + button {
+    margin-left: 20px;
+}
+.serverMessages {
+    width: 100%;
+    padding-left: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.serverMessages p, .serverMessages span {
+    margin-bottom: 15px
+}

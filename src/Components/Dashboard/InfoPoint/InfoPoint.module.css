@@ -1,0 +1,12 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start
+}
+.infoBlock {
+    background-color: #f0f2f5;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

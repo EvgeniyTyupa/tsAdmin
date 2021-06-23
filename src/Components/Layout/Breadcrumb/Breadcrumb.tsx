@@ -10,10 +10,11 @@ export interface BreadcrumbPath {
 }
 
 interface BreadcrumbProps {
-    routes: BreadcrumbPath[]
+    routes?: BreadcrumbPath[]
+    title?: string
 }
 
-const Breadcrumb = ({ routes }: BreadcrumbProps) => {
+const Breadcrumb = ({ routes, title }: BreadcrumbProps) => {
 
     return(
         <div className={classes.main}>
@@ -21,17 +22,17 @@ const Breadcrumb = ({ routes }: BreadcrumbProps) => {
                 <AntBreadcrumb.Item>
                     <NavLink to="/dashboard">Dashboard</NavLink>
                 </AntBreadcrumb.Item>
-                {routes.map(item => (
+                {routes && routes.map(item => (
                     <AntBreadcrumb.Item key={item.path}>
                         <NavLink to={`${item.path}`}>{item.title}</NavLink>
                     </AntBreadcrumb.Item>
                 ))}
             </AntBreadcrumb>
             <h2>
-                <NavLink to={routes.length > 1 ? routes[routes.length - 2].path : "/dashboard"} className={classes.arrowLink}>
+                <NavLink to={routes ? (routes.length > 1 ? routes[routes.length - 2].path : "/dashboard") : "/dashboard"} className={classes.arrowLink}>
                     <ArrowLeftOutlined /> &nbsp;
                 </NavLink>
-                <span>{routes[routes.length-1].title}</span>
+                <span>{routes ? routes[routes.length-1].title : (title && title)}</span>
             </h2>
         </div>
        

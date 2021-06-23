@@ -1,0 +1,16 @@
+.main {
+    display: flex;
+    flex-direction: column;
+}
+.body {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+.body h1 {
+    align-self: center;
+    font-weight: bold;
+    font-size: 28px;
+}

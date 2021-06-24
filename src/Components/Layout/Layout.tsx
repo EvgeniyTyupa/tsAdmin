@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Layout as AntLayout, Menu, Breadcrumb, Button } from 'antd'
+import { Layout as AntLayout, Menu, Breadcrumb, Button, Divider } from 'antd'
 import classes from './Layout.module.css'
 import { NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -12,6 +12,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import { AppStateType } from '../../Redux/reduxStore'
 import UserProfile from './UserProfile/UserProfile'
 import { User } from '../../Redux/User/userTypes'
+import Siderbar from './Sidebar/Sidebar'
 
 interface LayoutProps {
     children: React.ReactElement,
@@ -41,16 +42,7 @@ const Layout = ({ children, user, logout }: LayoutProps) => {
                 <div className={classes.logo}>
                     <img src={logo}/>
                 </div>
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={['0']}>
-                    {menuItemsList.map(item => (
-                        <Menu.Item key={item.id}>
-                            <NavLink to={item.path}>{item.text}</NavLink>
-                        </Menu.Item>
-                    ))}
-                    <Menu.Item key="logout">
-                        
-                    </Menu.Item>
-                </Menu>
+                <Siderbar menuItemsList={menuItemsList} isCollapsed={isCollapsed}/>
             </Sider>
             <AntLayout>
                 <Header className={classes.header}>

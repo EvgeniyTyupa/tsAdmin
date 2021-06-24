@@ -17,140 +17,140 @@ export const useMenuItems = () => {
             ]
         },
         {
-            title: "BILLING",
+            title: t("menu.billing.title"),
             items: [
                 {
                     id: 'profile',
                     path: '/profile',
-                    text: "Account",
+                    text: t("menu.billing.account"),
                     icon: UserOutlined
                 },
                 {
                     id: 'transactions',
                     path: '/transactions',
-                    text: "Transactions",
+                    text: t("menu.billing.transactions"),
                     icon: RiseOutlined
                 },
                 {
                     id: 'gateways',
                     path: '/gateways',
-                    text: "Gateways",
+                    text: t("menu.billing.gateways"),
                     icon: ClusterOutlined
                 },
                 {
                     id: 'cards',
                     path: '/bank_cards',
-                    text: "Bank Cards",
+                    text: t("menu.billing.cards"),
                     icon: CreditCardOutlined
                 },
             ]
         },
         {
-            title: "PROMOTION",
+            title: t("menu.promotion.title"),
             items: [
                 {
                     id: 'offers',
                     path: '/offers',
-                    text: "Offers",
+                    text: t("menu.promotion.offers"),
                     icon: InboxOutlined
                 },
                 {
                     id: 'events',
                     path: '/events',
-                    text: "Events",
+                    text: t("menu.promotion.events"),
                     icon: CalendarOutlined
                 },
                 {
                     id: 'audiences',
                     path: '/audiences',
-                    text: "Audiences",
+                    text: t("menu.promotion.audiences"),
                     icon: PhoneOutlined
                 },
                 {
                     id: 'onboardings',
                     path: '/onboardings',
-                    text: "Onboardings",
+                    text: t("menu.promotion.onboardings"),
                     icon: ScheduleOutlined
                 },
             ]
         },
         {
-            title: "MANAGMENT",
+            title: t("menu.managment.title"),
             items: [
                 {
                     id: 'users',
                     path: '/users',
-                    text: "Users",
+                    text: t("menu.managment.users"),
                     icon: TeamOutlined
                 },
                 {
                     id: 'tenants',
                     path: '/tenants',
-                    text: "Tenants",
+                    text: t("menu.managment.tenants"),
                     icon: SmileOutlined
                 },
                 {
                     id: 'analytics',
                     path: '/analytics',
-                    text: "Analytics",
+                    text: t("menu.managment.analytics"),
                     icon: PieChartOutlined
                 },
             ]
         },
         {
-            title: "CONTENT",
+            title: t("menu.content.title"),
             items: [
                 {
                     id: 'levels',
                     path: '/levels',
-                    text: "Levels",
+                    text: t("menu.content.levels"),
                     icon: BarChartOutlined
                 },
                 {
                     id: 'floors',
                     path: '/floors',
-                    text: "Floors",
+                    text: t("menu.content.floors"),
                     icon: OrderedListOutlined
                 },
                 {
                     id: 'documents',
                     path: '/documents',
-                    text: "Documents",
+                    text: t("menu.content.documents"),
                     icon: SnippetsOutlined
                 },
                 {
                     id: 'parking',
                     path: '/parking_spots',
-                    text: "Parking Spots",
+                    text: t("menu.content.parking"),
                     icon: CarOutlined
                 },
                 {
                     id: 'questions',
                     path: '/questionnaires',
-                    text: "Questionnaires",
+                    text: t("menu.content.questions"),
                     icon: QuestionCircleOutlined
                 },
             ]
         },
         {
-            title: "SYSTEM",
+            title: t("menu.system.title"),
             items: [
                 {
                     id: 'administrators',
                     path: '/administrators',
-                    text: "Administators",
+                    text: t("menu.system.admins"),
                     icon: CrownOutlined
                 },
                 {
                     id: 'notifications',
                     path: '/notifications',
-                    text: "Notifications",
+                    text: t("menu.system.notifications"),
                     icon: SmileOutlined
                 },
                 {
                     id: 'settings',
                     path: '/settings',
-                    text: "Settings",
+                    text: t("menu.system.settings"),
                     icon: SettingOutlined
                 },
             ]

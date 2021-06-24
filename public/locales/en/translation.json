@@ -1,7 +1,41 @@
 {
     "menu": {
         "dashboard": "Dashboard",
-        "level": "Level",
+        "billing": {
+            "title": "BILLING",
+            "account": "Account",
+            "transactions": "Transactions",
+            "gateways": "Gateways",
+            "cards": "Bank Cards"
+        },
+        "promotion": {
+            "title": "PROMOTION",
+            "offers": "Offers",
+            "events": "Events",
+            "audiences": "Audiences",
+            "onboardings": "Onboardings"
+        },
+        "managment": {
+            "title": "MANAGMENT",
+            "users": "Users",
+            "tenants": "Tenants",
+            "analytics": "Analytics"
+        },
+        "content": {
+            "title": "CONTENT",
+            "levels": "Levels",
+            "floors": "Floors",
+            "documents": "Documents",
+            "parking": "Parking Spots",
+            "questions": "Questionnaries"
+        },
+        "system": {
+            "title": "SYSTEM",
+            "admins": "Administators",
+            "notifications": "Notifications",
+            "settings": "Settings"
+        },
+        "level": "Levels",
         "profile": "Profile",
         "logout": "Logout"
     },

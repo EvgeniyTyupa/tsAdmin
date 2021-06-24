@@ -1,0 +1,42 @@
+.main {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, .3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+}
+.window {
+    background-color: white;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.header button {
+    border: none;
+    font-size: 16px;
+}
+.header h3 {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.buttons {
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start
+}
+.buttons button + button {
+    margin-left: 8px;
+}

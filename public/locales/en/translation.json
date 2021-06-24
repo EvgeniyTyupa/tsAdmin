@@ -31,7 +31,8 @@
         "new": "+ New",
         "removeText": "Are you sure?",
         "remove": "Remove",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "apply": "Apply"
     },
     "level": {
         "title": "Level",
@@ -77,6 +78,20 @@
             "secureStatusMedium": "Medium",
             "secureStatusStrong": "Strong",
             "info": "Please enter at least 8 characters and don't use passwords that are easy to guess."
+        }
+    },
+    "dashboard": {
+        "datePicker": {
+            "today": "Today",
+            "yesterday": "Yesterday",
+            "last7days": "Last 7 days",
+            "last30days": "Last 30 days",
+            "last3month": "Last 3 month",
+            "last12month": "Last 12 month",
+            "custom": "Custom",
+            "customPicker": {
+                "title": "Custom date range"
+            }
         }
     }
 }

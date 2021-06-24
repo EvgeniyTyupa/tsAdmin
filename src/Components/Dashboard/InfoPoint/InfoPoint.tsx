@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './InfoPoint.module.css'
 
-interface InfoPointProps {
+export interface InfoPointProps {
     label: string
     info: string | number
 }

@@ -1,3 +1,4 @@
+import { AreaChartOutlined } from "@ant-design/icons"
 import { useTranslation } from "react-i18next"
 
 export const useMenuItems = () => {
@@ -7,13 +8,14 @@ export const useMenuItems = () => {
         {
             id: 'dashboard',
             path: '/dashboard',
-            text: t("menu.dashboard")
+            text: t("menu.dashboard"),
+            icon: AreaChartOutlined
         },
         {
             id: 'level',
             path: '/level',
             text: t("menu.level")
-        }
+        },
     ]
 
     return menu

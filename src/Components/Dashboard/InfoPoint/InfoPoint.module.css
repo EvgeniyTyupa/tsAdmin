@@ -1,7 +1,8 @@
 .main {
     display: flex;
     flex-direction: column;
-    align-items: flex-start
+    align-items: flex-start;
+    width: 140px;
 }
 .infoBlock {
     background-color: #f0f2f5;
@@ -9,4 +10,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    margin-top: 5px;
 }

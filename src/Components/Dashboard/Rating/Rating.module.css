@@ -1,0 +1,10 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    margin-left: 20px;
+}
+.main ol {
+    padding: 10px 25px;
+    background-color: #f0f2f5;
+}

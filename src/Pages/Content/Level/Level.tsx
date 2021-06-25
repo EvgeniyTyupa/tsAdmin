@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import Layout from '../../../Components/Layout/Layout'
 import classes from './Level.module.css'
 import { useTranslation } from 'react-i18next'
-import { Table, Input, Button, Space, TablePaginationConfig } from 'antd';
+import { Table, Button, TablePaginationConfig } from 'antd';
 import { Level as ILevel } from '../../../Redux/Level/levelTypes';
 import { useTableColumns } from './useTableColumns';
 import LevelForm, { LevelFormValues } from '../../../Components/Level/LevelForm';
-import LevelDeleteModal from '../../../Components/Level/LevelDeleteModal/LevelDeleteModal';
+import DeleteModal from '../../../Components/Common/DeleteModal/DeleteModal';
 import { FilterValue } from 'antd/lib/table/interface';
 import Breadcrumb, { BreadcrumbPath } from '../../../Components/Layout/Breadcrumb/Breadcrumb';
 
@@ -67,7 +67,7 @@ const Level = ({
                 </div>
                 {isOpenAddModal && <LevelForm type="new" handleModal={handleAddModal} action={addLevel}/>}
                 {(isOpenEditModal && currentLevel) && <LevelForm type="edit" handleModal={handleEditModal} action={editLevel} level={currentLevel}/>}
-                {(isOpenDeleteModal && currentLevel) && <LevelDeleteModal levelId={currentLevel?.id} closeModal={handleOpenDeleteModal} deleteLevel={deleteLevel}/>}
+                {(isOpenDeleteModal && currentLevel) && <DeleteModal itemId={currentLevel?.id} closeModal={handleOpenDeleteModal} deleteAction={deleteLevel}/>}
                 <Table 
                     onChange={handleTableChange}
                     dataSource={levels} 

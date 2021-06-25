@@ -1,9 +1,10 @@
+import { Level } from "../../Level/levelTypes";
 import { SET_CURRENT_USER, SET_TOTAL_USERS, SET_USERS_DATA } from "./usersConstants";
 import { ManagmentUser } from "./usersTypes";
 
 export type UsersActionTypes = 
     SetUsersDataActionType | SetTotalUsersActionType |
-    SetCurrentUserActionType
+    SetCurrentUserActionType 
 
 type SetUsersDataActionType = {
     type: typeof SET_USERS_DATA,

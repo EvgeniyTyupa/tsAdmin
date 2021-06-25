@@ -1,6 +1,8 @@
 import { ThunkAction } from "redux-thunk";
+import { levelApi } from "../../../Api/levelApi";
 import { usersApi } from "../../../Api/usersApi";
 import { CommonActionTypes, setIsFetching } from "../../Common/commonActions";
+import { Level } from "../../Level/levelTypes";
 import { AppStateType } from "../../reduxStore";
 import { setCurrentUser, setTotalUsers, setUsersData, UsersActionTypes } from "./usersActions";
 import { SET_CURRENT_USER, SET_TOTAL_USERS, SET_USERS_DATA } from "./usersConstants";
@@ -23,7 +25,7 @@ export const usersReducer = (state = initialState, action: UsersActionTypes) => 
             return { ...state, total: action.total }
         }
         case SET_CURRENT_USER: {
-            return { ...state, user: action.user }
+            return { ...state, currentUser: action.user }
         }
         default: 
             return state
@@ -46,9 +48,19 @@ export const getUser = (userId: string): ThunkAction<Promise<void>, AppStateType
     dispatch(setIsFetching(true))
     try{
         let response = await usersApi.getUser(userId)
-
         //@ts-ignore
         dispatch([setCurrentUser(response), setIsFetching(false)])
+    }catch(err){
+        dispatch(setIsFetching(false))
+    }
+}
+
+
+export const deleteUser = (userId: string): ThunkAction<Promise<void>, AppStateType, undefined, UsersActionTypes | CommonActionTypes> => async (dispatch) => {
+    dispatch(setIsFetching(true))
+    try{
+        await usersApi.deleteUser(userId)
+        dispatch(setIsFetching(false))
     }catch(err){
         dispatch(setIsFetching(false))
     }

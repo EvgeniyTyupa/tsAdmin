@@ -43,6 +43,18 @@ export const getLevels = (limit: number, current: number, sorter: string, search
     }
 } 
 
+export const getLevel = (levelId: string): ThunkAction<Promise<void>, AppStateType, undefined, LevelActionTypes | CommonActionTypes> => async (dispatch) => {
+    dispatch(setIsFetching(true))
+    try{
+        let response = await levelApi.getLevel(levelId)
+        
+        //@ts-ignore
+        dispatch([setIsFetching(false)])
+    }catch(err){
+        dispatch(setIsFetching(false))
+    }
+}
+
 export const addLevel = (data: LevelFormValues): ThunkAction<Promise<void>, AppStateType, undefined, LevelActionTypes | CommonActionTypes> => async (dispatch) => {
     dispatch(setIsFetching(true))
     try{

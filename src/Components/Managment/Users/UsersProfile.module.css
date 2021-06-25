@@ -7,3 +7,13 @@
     flex-direction: column;
     margin-left: 15px;
 }
+.field {
+    display: flex;
+    align-items: center;
+}
+.field label {
+    font-weight: 600;
+}
+.field span {
+    margin-left: 8px;
+}

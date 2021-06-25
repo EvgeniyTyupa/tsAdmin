@@ -37,6 +37,10 @@ export const levelApi = {
             .then(response => response.data)
         }
     },
+    getLevel(levelId: string){
+        return instance.get(`/levels/${levelId}`)
+        .then(response => response.data)
+    },
     addLevel(data: LevelFormValues){
         let level = typezeLevel(data)
 

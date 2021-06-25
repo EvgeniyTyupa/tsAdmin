@@ -66,7 +66,8 @@
         "removeText": "Are you sure?",
         "remove": "Remove",
         "cancel": "Cancel",
-        "apply": "Apply"
+        "apply": "Apply",
+        "submit": "Submit"
     },
     "level": {
         "title": "Level",

@@ -8,14 +8,17 @@ import classes from './User.module.css'
 import { cx } from '../../../../Utils/classnames'
 import { useUserTableColumns } from './useUserTableColumns'
 import { useTranslation } from 'react-i18next'
-import { BreadcrumbPath } from '../../../../Components/Layout/Breadcrumb/Breadcrumb'
+import Breadcrumb, { BreadcrumbPath } from '../../../../Components/Layout/Breadcrumb/Breadcrumb'
 import { ManagmentUser } from '../../../../Redux/Managment/Users/usersTypes'
+import SendPushModal from '../../../../Components/Managment/Users/SendPushModal/SendPushModal'
 
 interface UserProps {
     user: ManagmentUser | null
+    isOpenSendPushModal: boolean
+    handleSendPushModal: () => void
 }
 
-const User = ({ user }: UserProps) => {
+const User = ({ user, isOpenSendPushModal, handleSendPushModal }: UserProps) => {
     const { t } = useTranslation()
 
     const columns = useUserTableColumns()
@@ -24,47 +27,57 @@ const User = ({ user }: UserProps) => {
         {
             title: "User",
             path: `/users/`
+        },
+        {
+            title: user ? user?.first_name + " " + user?.last_name : "User",
+            path: `/users/${user?.id}`
         }
     ]
 
     return(
         <Layout>
-            <Card className={classes.main}>
-                <div className={classes.topInfo}>
-                    <UsersProfile/>
-                    <Button type="primary">Send Push</Button>
-                </div>
-                <div className={classes.points}>
-                    <UserStatisticBlock label="Points" data={5454}/>
-                    <UserStatisticBlock label="Level" data={"Silver"}/>
-                    <UserStatisticBlock label="Spent" data={"GEL"}/>
-                    <UserStatisticBlock label="Spent Points" data={0}/>
-                </div>
-                <div className={classes.charts}>
-                    <div className={cx(classes.chart, classes.pieChart)}>
-                        <Chart type={"pie"} label={"Visited Stores"}/>
+            <div>
+                <Breadcrumb routes={routes}/>
+                {isOpenSendPushModal && <SendPushModal handleModal={handleSendPushModal}/>}
+                <Card className={classes.main}>
+                    <div className={classes.topInfo}>
+                        <UsersProfile user={user}/>
+                        <Button type="primary" onClick={handleSendPushModal}>Send Push</Button>
                     </div>
-                    <div className={cx(classes.chart, classes.barChart)}>
-                        <Chart type={"bar"} label={"Purchases by month"}/>
+                    {user && 
+                    <div className={classes.points}>
+                        <UserStatisticBlock label="Points" data={user?.points}/>
+                        <UserStatisticBlock label="Level" data={user.level.name}/>
+                        <UserStatisticBlock label="Spent" data={"GEL"}/>
+                        <UserStatisticBlock label="Spent Points" data={user.points_spent}/>
+                    </div>}
+                    <div className={classes.charts}>
+                        <div className={cx(classes.chart, classes.pieChart)}>
+                            <Chart type={"pie"} label={"Visited Stores"}/>
+                        </div>
+                        <div className={cx(classes.chart, classes.barChart)}>
+                            <Chart type={"bar"} label={"Purchases by month"}/>
+                        </div>
                     </div>
-                </div>
-                <div className={classes.table}>
-                    <div className={classes.tabs}>
-                        <Tabs defaultActiveKey="1">
-                            <Tabs.TabPane tab="Purchases" key="1">
-                                <span>Purchases</span>
-                            </Tabs.TabPane>
-                            <Tabs.TabPane tab="Last Logins" key="2">
-                                <span>Last Logins</span>
-                            </Tabs.TabPane>
-                            <Tabs.TabPane tab="Offer Tickets" key="3">
-                                <span>Offer Tickets</span>
-                            </Tabs.TabPane>
-                        </Tabs>
+                    <div className={classes.table}>
+                        <div className={classes.tabs}>
+                            <Tabs defaultActiveKey="1">
+                                <Tabs.TabPane tab="Purchases" key="1">
+                                    <span>Purchases</span>
+                                </Tabs.TabPane>
+                                <Tabs.TabPane tab="Last Logins" key="2">
+                                    <span>Last Logins</span>
+                                </Tabs.TabPane>
+                                <Tabs.TabPane tab="Offer Tickets" key="3">
+                                    <span>Offer Tickets</span>
+                                </Tabs.TabPane>
+                            </Tabs>
+                        </div>
+                        <Table columns={columns}/>
                     </div>
-                    <Table columns={columns}/>
-                </div>
-            </Card>
+                </Card>
+            </div>
+            
         </Layout>
     )
 }

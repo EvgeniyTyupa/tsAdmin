@@ -4,19 +4,24 @@ import classes from './Users.module.css'
 import { useUsersTableColumns } from './useUsersTableCoumns'
 import { Card, Table } from 'antd'
 import { ManagmentUser } from '../../../Redux/Managment/Users/usersTypes'
-import { NavLink } from 'react-router-dom'
 import Breadcrumb, { BreadcrumbPath } from '../../../Components/Layout/Breadcrumb/Breadcrumb'
 import { useTranslation } from 'react-i18next'
+import DeleteModal from '../../../Components/Common/DeleteModal/DeleteModal'
 
 interface UsersProps {
     users: ManagmentUser[]
     total: number
+    limit: number
+    handleDeleteUser: (userId: string) => void
+    handleOpenDeleteModal: (user: ManagmentUser | null) => void
+    isOpenDeleteModal: boolean
+    userToAction: ManagmentUser | null
 }
 
-const Users = ({ users, total }: UsersProps) => {
+const Users = ({ users, total, limit, handleDeleteUser, handleOpenDeleteModal, isOpenDeleteModal, userToAction }: UsersProps) => {
     const { t } = useTranslation()
 
-    const columns = useUsersTableColumns()
+    const columns = useUsersTableColumns(handleOpenDeleteModal)
 
     const routes: BreadcrumbPath[] = [
         {
@@ -30,8 +35,17 @@ const Users = ({ users, total }: UsersProps) => {
             <div>
                 <Breadcrumb routes={routes}/>
                 <Card className={classes.main}>
-                    <NavLink to="/users/1187c953-fd3d-46b2-a761-320cfe2189ae">Test Users</NavLink>
-                    <Table columns={columns} dataSource={users}/>
+                    { (isOpenDeleteModal && userToAction ) && <DeleteModal deleteAction={handleDeleteUser} closeModal={handleOpenDeleteModal} itemId={userToAction?.id}/>}
+                    <Table 
+                        columns={columns} 
+                        dataSource={users}
+                        pagination={{
+                            defaultPageSize: limit,
+                            total: total,
+                            showSizeChanger: true,
+                            pageSizeOptions: ['10', '25', '50', '100']
+                        }}
+                    />
                 </Card>
             </div>
         </Layout>

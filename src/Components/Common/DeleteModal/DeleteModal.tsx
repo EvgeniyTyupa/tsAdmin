@@ -1,17 +1,17 @@
 import React from 'react'
 import { CloseSquareFilled } from '@ant-design/icons'
 import { Button } from 'antd'
-import classes from './LevelDeleteModal.module.css'
+import classes from './DeleteModal.module.css'
 import { Level } from '../../../Redux/Level/levelTypes'
 import { useTranslation } from 'react-i18next'
 
 interface Props {
-    deleteLevel: (levelId: string) => void
-    closeModal: (level: Level | null) => void
-    levelId: string
+    deleteAction: (itemId: string) => void
+    closeModal: (item: any) => void
+    itemId: string
 }
 
-const LevelDeleteModal = ({ deleteLevel, closeModal, levelId }: Props) => {
+const DeleteModal = ({ deleteAction, closeModal, itemId }: Props) => {
     const { t } = useTranslation()
     
     return(
@@ -23,7 +23,7 @@ const LevelDeleteModal = ({ deleteLevel, closeModal, levelId }: Props) => {
                 <div className={classes.body}>
                     <p>{t("actions.removeText")}</p>
                     <div className={classes.buttons}>
-                        <Button danger onClick={() => deleteLevel(levelId)}>{t("actions.remove")}</Button>
+                        <Button danger onClick={() => deleteAction(itemId)}>{t("actions.remove")}</Button>
                         <Button onClick={() => closeModal(null)}>{t("actions.cancel")}</Button>
                     </div>
                 </div>
@@ -32,4 +32,4 @@ const LevelDeleteModal = ({ deleteLevel, closeModal, levelId }: Props) => {
     )
 }
 
-export default LevelDeleteModal
+export default DeleteModal

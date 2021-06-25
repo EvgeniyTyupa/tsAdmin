@@ -11,12 +11,13 @@ interface ProtectedRouteProps {
     component: FunctionComponent
     isAuth: boolean
     path: string
+    exact: boolean
     isFetching: boolean
     user: User | null
     me: () => void
 }
 
-const ProtectedRoute = ({ component, isAuth, isFetching, user, me, ...rest }: ProtectedRouteProps) => {
+const ProtectedRoute = ({ component, isAuth, isFetching, user, exact, me, ...rest }: ProtectedRouteProps) => {
     
     useEffect(() => {
         if(!isAuth || !user){
@@ -33,7 +34,7 @@ const ProtectedRoute = ({ component, isAuth, isFetching, user, me, ...rest }: Pr
     return(
         <>
             {isFetching && <Preloader/>}
-            <Route { ...rest} render={routeComponent}/>
+            <Route {...rest} render={routeComponent}/>
         </>
     )
 }

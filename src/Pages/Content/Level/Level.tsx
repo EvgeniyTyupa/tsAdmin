@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import Layout from '../../Components/Layout/Layout'
+import Layout from '../../../Components/Layout/Layout'
 import classes from './Level.module.css'
 import { useTranslation } from 'react-i18next'
 import { Table, Input, Button, Space, TablePaginationConfig } from 'antd';
-import { Level as ILevel } from '../../Redux/Level/levelTypes';
+import { Level as ILevel } from '../../../Redux/Level/levelTypes';
 import { useTableColumns } from './useTableColumns';
-import LevelForm, { LevelFormValues } from '../../Components/Level/LevelForm';
-import LevelDeleteModal from '../../Components/Level/LevelDeleteModal/LevelDeleteModal';
+import LevelForm, { LevelFormValues } from '../../../Components/Level/LevelForm';
+import LevelDeleteModal from '../../../Components/Level/LevelDeleteModal/LevelDeleteModal';
 import { FilterValue } from 'antd/lib/table/interface';
-import Breadcrumb, { BreadcrumbPath } from '../../Components/Layout/Breadcrumb/Breadcrumb';
+import Breadcrumb, { BreadcrumbPath } from '../../../Components/Layout/Breadcrumb/Breadcrumb';
 
 interface LevelProps {
     levels: ILevel[]

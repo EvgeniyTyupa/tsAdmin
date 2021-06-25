@@ -17,7 +17,7 @@ export function interceptor(store: any) {
 
         let token = store.getState().user.accessToken
 
-        config.headers['Authorization'] = `Bearer ` + cookieToken || token
+        config.headers['Authorization'] = `Bearer ` + (cookieToken ? cookieToken : token) 
         return config
     })
     

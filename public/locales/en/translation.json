@@ -127,5 +127,8 @@
                 "title": "Custom date range"
             }
         }
+    },
+    "transactions": {
+        "empty": "No payment gateway added."
     }
 }

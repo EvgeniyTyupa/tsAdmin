@@ -7,12 +7,12 @@ import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 import Login from './Pages/Auth/Login/Login';
 import Forgot from './Pages/Auth/Forgot/Forgot';
 import Reset from './Pages/Auth/Reset/Reset';
-import LevelContainer from './Pages/Level/LevelContainer';
-import ProfileContainer from './Pages/Profile/ProfileContainer';
-import DashboardContainer from './Pages/Dashboard/DashboardContainer';
 import NotFound from './Pages/NotFound/NotFound';
+import { useAppRoutes } from './Utils/hooks/useAppRoutes';
 
 const App = () => {
+  const protectedRoutes = useAppRoutes()
+
   return(
     <BrowserRouter>
       <Switch>
@@ -28,11 +28,10 @@ const App = () => {
         <Route path="/auth/forgot" render={()=><Forgot/>}/>
         <Route path="/auth/reset/:token" render={()=><Reset/>}/>
 
-        {/* SYSTEM */}
-        <ProtectedRoute component={DashboardContainer} path="/dashboard"/>
-        <ProtectedRoute component={LevelContainer} path="/levels"/>
-        <ProtectedRoute component={ProfileContainer} path="/profile"/>
-
+        {protectedRoutes.map(route => (
+          <ProtectedRoute component={route.component} exact={route.exact} path={route.path}/>
+        ))}
+       
         {/* 404 NOT FOUND */}
         <Route component={NotFound}/>
 

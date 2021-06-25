@@ -1,0 +1,30 @@
+.main {
+    padding-bottom: 25px;
+}
+.topInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.points {
+    display: flex;
+    margin-top: 35px;
+}
+.points div {
+    margin-right: 15px;
+}
+.charts {
+    width: 100%;
+    display: flex;
+    margin-top: 35px;
+}
+.charts {
+    width: fit-content;
+}
+.chart + .chart {
+    margin-left: 100px;
+}
+.table {
+    width: 100%;
+    margin-top: 65px;
+}

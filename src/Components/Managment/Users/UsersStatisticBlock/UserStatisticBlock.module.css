@@ -1,0 +1,13 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    box-sizing: border-box;
+    background-color: #ccc;
+    width: max-content;
+}
+.main p {
+    margin-bottom: 0;
+    margin-top: 0;
+}

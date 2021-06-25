@@ -6,9 +6,11 @@ import multi from 'redux-multi'
 import userReducer from './User/userReducer';
 import commonReducer from './Common/commonReducer';
 import levelReducer from './Level/levelReducer';
+import { usersReducer } from './Managment/Users/usersReducer';
 
 let rootReducer = combineReducers({
     user: userReducer,
+    users: usersReducer,
     common: commonReducer,
     level: levelReducer
 })

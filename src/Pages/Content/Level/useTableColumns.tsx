@@ -1,10 +1,10 @@
 import { useTranslation } from "react-i18next"
-import { Level } from '../../Redux/Level/levelTypes'
-import { getTimeByTimeZone } from '../../Utils/timezone'
+import { Level } from '../../../Redux/Level/levelTypes'
+import { getTimeByTimeZone } from '../../../Utils/timezone'
 import { Button, DatePicker, Input, Space } from 'antd'
 import { DeleteFilled, EditFilled, SearchOutlined } from '@ant-design/icons'
-import ColorPicker from "../../Components/Common/ColorPicker/ColorPicker"
-import { KEY_CASHBACK, KEY_COLOR, KEY_DISPLAY_START, KEY_NAME, KEY_REAL_START, KEY_UPDATED_AT } from "../../Redux/Level/levelConstants"
+import ColorPicker from "../../../Components/Common/ColorPicker/ColorPicker"
+import { KEY_CASHBACK, KEY_COLOR, KEY_DISPLAY_START, KEY_NAME, KEY_REAL_START, KEY_UPDATED_AT } from "../../../Redux/Level/levelConstants"
 
 export const useTableColumns = (
         handleEditModal: (currentLevel: Level | null) => void, 

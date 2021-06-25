@@ -1,0 +1,3 @@
+export const SET_USERS_DATA = 'SET_USERS_DATA'
+export const SET_TOTAL_USERS = 'SET_TOTAL_USERS'
+export const SET_CURRENT_USER = 'SET_CURRENT_USER'

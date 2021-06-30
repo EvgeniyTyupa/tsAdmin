@@ -11,6 +11,8 @@ import { useTranslation } from 'react-i18next'
 import Breadcrumb, { BreadcrumbPath } from '../../../../Components/Layout/Breadcrumb/Breadcrumb'
 import { ManagmentUser } from '../../../../Redux/Managment/Users/usersTypes'
 import SendPushModal from '../../../../Components/Managment/Users/SendPushModal/SendPushModal'
+import { useOffersClaimedTableColumns } from './useOffersClaimedTableColumns'
+import { useOfferTicketsColumns } from './useOfferTicketsColumns'
 
 interface UserProps {
     user: ManagmentUser | null
@@ -22,10 +24,12 @@ const User = ({ user, isOpenSendPushModal, handleSendPushModal }: UserProps) => 
     const { t } = useTranslation()
 
     const columns = useUserTableColumns()
+    const offersClaimedColumns = useOffersClaimedTableColumns()
+    const ticketColumns = useOfferTicketsColumns()
 
     const routes: BreadcrumbPath[] = [
         {
-            title: "User",
+            title: "Users",
             path: `/users/`
         },
         {
@@ -63,17 +67,17 @@ const User = ({ user, isOpenSendPushModal, handleSendPushModal }: UserProps) => 
                         <div className={classes.tabs}>
                             <Tabs defaultActiveKey="1">
                                 <Tabs.TabPane tab="Purchases" key="1">
-                                    <span>Purchases</span>
+                                    <Table columns={columns}/>
                                 </Tabs.TabPane>
                                 <Tabs.TabPane tab="Last Logins" key="2">
-                                    <span>Last Logins</span>
+                                    <Table columns={offersClaimedColumns}/>
                                 </Tabs.TabPane>
                                 <Tabs.TabPane tab="Offer Tickets" key="3">
-                                    <span>Offer Tickets</span>
+                                    <Table columns={ticketColumns}/>
                                 </Tabs.TabPane>
                             </Tabs>
                         </div>
-                        <Table columns={columns}/>
+                        
                     </div>
                 </Card>
             </div>
